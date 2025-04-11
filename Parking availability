@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Parking Availability</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #343a40;
+            margin-bottom: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .availability {
+            margin-bottom: 20px;
+            padding: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            background-color: #e9ecef;
+        }
+        
+        .availability h2 {
+            margin: 0;
+            color: #495057;
+        }
+        
+        .availability p {
+            margin: 5px 0;
+        }
+        
+        .inquiry-form {
+            margin-top: 20px;
+        }
+        
+        label {
+            display: block;
+            margin: 10px 0 5px;
+            font-weight: bold;
+            color: #495057;
+        }
+        
+        input[type="text"],
+        input[type="email"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+        }
+        
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 20px;
+            color: #6c757d;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Parking Availability</h1>
+
+        <div class="availability">
+            <h2>Current Availability</h2>
+            <p><strong>Total Spots:</strong> 100</p>
+            <p><strong>Available Spots:</strong> 25</p>
+            <p><strong>Occupied Spots:</strong> 75</p>
+            <p><strong>Location:</strong> Main Street Parking Garage</p>
+        </div>
+
+        <div class="inquiry-form">
+            <h2>Inquire About Parking</h2>
+            <form id="inquiryForm">
+                <label for="vehicleNumber">Vehicle Number:</label>
+                <input type="text" id="vehicleNumber" name="vehicleNumber" required placeholder="Enter your vehicle number">
+
+                <label for="email">Your Email:</label>
+                <input type="email" id="email" name="email" required>
+
+                <label for="message">Message:</label>
+                <input type="text" id="message" name="message" required placeholder="Enter your inquiry here...">
+
+                <input type="submit" value="Submit Inquiry">
+            </form>
+        </div>
+
+        <div class="footer">
+            <p>&copy; 2023 Your Company Name. All rights reserved.</p>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('inquiryForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Your inquiry has been submitted successfully!');
+
+        });
+    </script>
+
+</body>
+
+</html>
