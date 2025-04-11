@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Canteen Pre-Ordering</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="canteen.css">
+    <style>
+        body {
+            font-family: oswald;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+        
+        select,
+        input[type="text"],
+        input[type="email"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        
+        input[type="submit"] {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Canteen Pre-Ordering</h1>
+        <form id="preOrderForm">
+            <label for="name">Full Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Phone Number:</label>
+            <input type="number" id="phone number" name="number" required>
+
+            <label for="foodItem">Select Food Item:</label>
+            <select id="foodItem" name="foodItem" required>
+                <option value="">--Please choose an option--</option>
+                <option value="burger">Burger - Rs 90.00</option>
+                <option value="pizza">Pizza - Rs 110.00</option>
+                <option value="salad">Salad - Rs 20.00</option>
+                <option value="sandwich">Sandwich - Rs 50.00</option>
+                <option value="pasta">Pasta - Rs 60.00</option>
+            </select>
+
+            <label for="quantity">Quantity:</label>
+            <input type="number" id="quantity" name="quantity" min="1" value="1" required>
+
+            <input type="submit" value=" Place Order ">
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('preOrderForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Your order has been placed successfully!');
+        });
+    </script>
+
+</body>
+
+</html>
