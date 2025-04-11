@@ -8,22 +8,23 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: #b81875;
             margin: 0;
             padding: 20px;
         }
         
         h1 {
             text-align: center;
-            color: #343a40;
+            color: #353b40;
             margin-bottom: 20px;
+            text-decoration: double underline;
         }
         
         .container {
             max-width: 800px;
             margin: auto;
-            background: white;
+            background: rgb(178, 106, 186);
             padding: 30px;
             border-radius: 8px;
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
@@ -34,7 +35,7 @@
             padding: 15px;
             border: 1px solid #ced4da;
             border-radius: 5px;
-            background-color: #e9ecef;
+            background: linear-gradient(to right, #734d9c, #143368);
         }
         
         .availability h2 {
@@ -54,7 +55,8 @@
             display: block;
             margin: 10px 0 5px;
             font-weight: bold;
-            color: #495057;
+            color: #22384d;
+            text-align: center;
         }
         
         input[type="text"],
@@ -68,7 +70,7 @@
         }
         
         input[type="submit"] {
-            background-color: #007bff;
+            background-color: linear-gradient(to right, #734d9c, #143368);;
             color: white;
             border: none;
             cursor: pointer;
@@ -76,13 +78,18 @@
         }
         
         input[type="submit"]:hover {
-            background-color: #0056b3;
+   
         }
         
         .footer {
             text-align: center;
             margin-top: 20px;
             color: #6c757d;
+        }
+        h2{
+            text-align: center;
+            text-decoration: underline;
+            color: black;
         }
     </style>
 </head>
@@ -101,7 +108,7 @@
         </div>
 
         <div class="inquiry-form">
-            <h2>Inquire About Parking</h2>
+            <h2 >Inquire About Parking</h2>
             <form id="inquiryForm">
                 <label for="vehicleNumber">Vehicle Number:</label>
                 <input type="text" id="vehicleNumber" name="vehicleNumber" required placeholder="Enter your vehicle number">
@@ -112,7 +119,7 @@
                 <label for="message">Message:</label>
                 <input type="text" id="message" name="message" required placeholder="Enter your inquiry here...">
 
-                <input type="submit" value="Submit Inquiry">
+                <input type="submit" value="Submit ">
             </form>
         </div>
 
