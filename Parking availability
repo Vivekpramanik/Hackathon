@@ -70,7 +70,7 @@
         }
         
         input[type="submit"] {
-            background-color: #6c757d
+            background-color: #6c757d;
             color: rgb(136, 38, 38);
             border: none;
             cursor: pointer;
