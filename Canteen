@@ -13,6 +13,8 @@
             background-color: #f4f4f4;
             margin: 0;
             padding: 20px;
+            background: linear-gradient(to right, #1e379e, #11d566);;
+            align-items: center;
         }
         
         h1 {
@@ -27,6 +29,9 @@
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            justify-content: center;
+            background: linear-gradient(to right, #7fb8cc, #143368);;
+            align-items: center;
         }
         
         label {
@@ -50,10 +55,12 @@
             color: white;
             border: none;
             cursor: pointer;
+            margin: auto;
+            padding-top: 5;
         }
         
         input[type="submit"]:hover {
-            background-color: #218838;
+            background-color:#333;
         }
     </style>
 </head>
