@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>University Bus Routes</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gradient-to-br from-blue-50 to-white min-h-screen p-4">
+    <div class="max-w-5xl mx-auto bg-white rounded-2xl shadow-xl p-6">
+        <h1 class="text-4xl font-bold text-center text-blue-700 mb-6">University Bus Routes</h1>
+
+        <div class="mb-6">
+            <input type="text" id="searchInput" placeholder="Search bus number or route..." class="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-400" onkeyup="filterTable()" />
+        </div>
+
+        <div class="overflow-x-auto">
+            <table class="w-full table-auto border-collapse">
+                <thead>
+                    <tr class="bg-blue-600 text-white text-left text-sm sm:text-base">
+                        <th class="p-3">Bus Number</th>
+                        <th class="p-3">Route</th>
+                    </tr>
+                </thead>
+                <tbody id="busTable" class="text-sm sm:text-base">
+                    <tr class="border-b hover:bg-blue-50 transition">
+                        <td class="p-3 font-medium">19</td>
+                        <td class="p-3">Dhatkidih city office </td>
+                    </tr>
+                    <tr class="border-b hover:bg-blue-50 transition">
+                        <td class="p-3 font-medium">22</td>
+                        <td class="p-3">Kadma/Sonari</td>
+                    </tr>
+                    <tr class="border-b hover:bg-blue-50 transition">
+                        <td class="p-3 font-medium">21</td>
+                        <td class="p-3">Mango and Dimna </td>
+                    </tr>
+                    <tr class="border-b hover:bg-blue-50 transition">
+                        <td class="p-3 font-medium">17</td>
+                        <td class="p-3">Telco </td>
+                    </tr>
+                    <tr class="border-b hover:bg-blue-50 transition">
+                        <td class="p-3 font-medium">24 </td>
+                        <td class="p-3">Boys Hostel</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script>
+        function filterTable() {
+            const input = document.getElementById("searchInput").value.toLowerCase();
+            const rows = document.querySelectorAll("#busTable tr");
+
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(input) ? "" : "none";
+            });
+        }
+    </script>
+</body>
+
+</html>
