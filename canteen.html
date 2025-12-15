@@ -68,15 +68,16 @@
 <body>
     <div class="container">
         <h1>Canteen Pre-Ordering</h1>
+        <form action="/submit-canteen" method="post">
         <form id="preOrderForm">
             <label for="name">Full Name:</label>
             <input type="text" id="name" name="name" required>
 
-            <label for="email">Phone Number:</label>
-            <input type="number" id="phone number" name="number" required>
+            <label for="phone">Phone Number:</label>
+            <input type="number" id="phone" name="phone" required>
 
             <label for="foodItem">Select Food Item:</label>
-            <select id="foodItem" name="foodItem" required>
+            <select id="fooditem" name="fooditem" required>
                 <option value="">--Please choose an option--</option>
                 <option value="burger">Burger - Rs 90.00</option>
                 <option value="pizza">Pizza - Rs 110.00</option>
@@ -89,6 +90,7 @@
             <input type="number" id="quantity" name="quantity" min="1" value="1" required>
 
             <input type="submit" value=" Place Order ">
+        </form>
         </form>
     </div>
 
