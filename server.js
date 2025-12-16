@@ -6,6 +6,7 @@ const Signup_DB = require('./signup');
 const login_DB = require('./login');
 const Issue_DB = require('./issue');
 http.createServer((req, res) => {
+    // FIRSTPAGE
     if(req.url === '/'){
             fs.readFile("firstpage.html", 'utf-8', (err, data) => {
         if (err) {
@@ -18,6 +19,7 @@ http.createServer((req, res) => {
         }
     })
     }
+    // SIGNUP PAGE
     else if(req.url === '/signup' && req.method === 'GET'){
         fs.readFile("signup.html",'utf8',(err,data) =>{
             if (err) {
@@ -30,9 +32,11 @@ http.createServer((req, res) => {
         }
         })
     }
+    // SUBMMITING AND GIVING DATA TO DATABASE
     else if(req.url === '/submit-signup' && req.method === 'POST'){
         return Signup_DB(req,res);
     }
+    // LOGIN PAGE
     else if(req.url === '/login'){
         fs.readFile("login.html",'utf8',(err,data) =>{
             if (err) {
@@ -45,9 +49,11 @@ http.createServer((req, res) => {
         }
         })
     }
+    // CHECKING ID PASS FROM SIGNUP DATABASE
     else if(req.url === '/submit-login' && req.method === 'POST'){
         return login_DB(req,res);
     }
+    // INDEX PAGE
     else if(req.url === '/index'){
         fs.readFile("index.html",'utf8',(err,data)=>{
            if (err) {
@@ -60,6 +66,7 @@ http.createServer((req, res) => {
         } 
         })
     }
+    // CANTEEN PAGE
     else if(req.url === '/canteen'){
         fs.readFile("canteen.html",'utf8',(err,data)=>{
            if (err) {
@@ -72,10 +79,12 @@ http.createServer((req, res) => {
         } 
         })
     }
+    // GIVING ORDER TO DATABASE
     else if(req.url === '/submit-canteen' && req.method === 'POST'){
         return Canteen_DB(req,res);
         // res.end();
     }
+    // ISSUE PAGE
     else if(req.url === '/Issue' && req.method === 'GET'){
         fs.readFile("Issue_report.html",'utf8',(err,data)=>{
            if (err) {
@@ -89,9 +98,11 @@ http.createServer((req, res) => {
         } 
         })
     } 
+    // GINVING ISSUE TO DATABASE
     else if(req.url === '/Issue-submit' && req.method === 'POST'){
         return Issue_DB(req,res);
     }
+    // LOST& FOUND PAGE
     else if(req.url === '/lost&found' && req.method === 'GET'){
         fs.readFile("lost&found.html",'utf8',(err,data)=>{
            if (err) {
@@ -102,6 +113,44 @@ http.createServer((req, res) => {
             res.writeHead(200, { "content-type": "text/html" });
             res.end(data);
         } 
+        })
+    }
+    // BUS TRACKING PAGE
+    else if(req.url === '/bus_tracking' && req.method === 'GET'){
+        fs.readFile('bus_tracking.html','utf8',(err,data) =>{
+            if(err){
+                res.writeHead(501,{'content-type' : 'text/plain'});
+                res.end("Page not found");
+            }
+            else{
+                res.writeHead(200,{'content-type' : 'text/html'});
+                res.end(data);
+            }
+        })
+    }
+    // PARKING AVAILABILITY PAGE
+    else if(req.url === '/Parking' && req.method === 'GET'){
+        fs.readFile('Parking_availability.html','utf8',(err,data) =>{
+            if(err){
+                res.writeHead(501,{'content-type' : 'text/plain'});
+                res.end("Page not found");
+            }
+            else{
+                res.writeHead(200,{'content-type' : 'text/html'});
+                res.end(data);
+            }
+        })
+    }
+    else if(req.url === '/event' && req.method === 'GET'){
+        fs.readFile('Event.html','utf8',(err,data) =>{
+            if(err){
+                res.writeHead(501,{'content-type' : 'text/plain'});
+                res.end("Page not found");
+            }
+            else{
+                res.writeHead(200,{'content-type' : 'text/html'});
+                res.end(data);
+            }
         })
     }
     else{
