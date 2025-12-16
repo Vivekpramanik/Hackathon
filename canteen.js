@@ -32,6 +32,8 @@ function Canteen_DB(req,res){
                 res.end("Something went wrong");
             }
             else{
+                res.writeHead(200,{'content-type' : 'text/html'});
+                res.end("<h1>Your order is placed</h1>");
                 console.log("Order submitted");
             }
         })

@@ -69,7 +69,8 @@
 
     <div class="container">
         <h1>Report an Issue</h1>
-        <form id="issueReportForm">
+        <form action="Issue-submit" method="post" id="issue">
+
             <label for="category">Issue Category:</label>
             <select id="category" name="category" required>
                 <option value="">--Please choose an option--</option>
@@ -84,15 +85,8 @@
 
             <input type="submit" value="Submit Report">
         </form>
+        </form>
     </div>
-
-    <script>
-        document.getElementById('issueReportForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            alert('Your issue report has been submitted successfully!');
-
-        });
-    </script>
 
 </body>
 
