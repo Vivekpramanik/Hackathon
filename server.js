@@ -5,6 +5,7 @@ const Canteen_DB = require('./canteen');
 const Signup_DB = require('./signup');
 const login_DB = require('./login');
 const Issue_DB = require('./issue');
+const Parking_DB = require('./parking');
 http.createServer((req, res) => {
     // FIRSTPAGE
     if(req.url === '/'){
@@ -140,6 +141,9 @@ http.createServer((req, res) => {
                 res.end(data);
             }
         })
+    }
+    else if(req.url === '/Parking-submit' && req.method === 'POST'){
+        return Parking_DB(req,res);
     }
     else if(req.url === '/event' && req.method === 'GET'){
         fs.readFile('Event.html','utf8',(err,data) =>{

@@ -110,9 +110,9 @@
 
         <div class="inquiry-form">
             <h2 >Inquire About Parking</h2>
-            <form id="inquiryForm">
+            <form action="Parking-submit" method="post" id="inquiryForm">
                 <label for="vehicleNumber">Vehicle Number:</label>
-                <input type="text" id="vehicleNumber" name="vehicleNumber" required placeholder="Enter your vehicle number">
+                <input type="text" id="number" name="number" required placeholder="Enter your vehicle number">
 
                 <label for="email">Your Email:</label>
                 <input type="email" id="email" name="email" required>
@@ -128,14 +128,6 @@
             <p>&copy; 2023 Your Company Name. All rights reserved.</p>
         </div>
     </div>
-
-    <script>
-        document.getElementById('inquiryForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            alert('Your inquiry has been submitted successfully!');
-
-        });
-    </script>
 
 </body>
 
