@@ -78,58 +78,22 @@ http.createServer((req, res) => {
         return Issue_DB(req,res);
     }
     // LOST& FOUND PAGE
-    else if(req.url === '/lost&found' && req.method === 'GET'){
-        fs.readFile("lost&found.html",'utf8',(err,data)=>{
-           if (err) {
-            res.writeHead(501, { "content-type": "text/plain" });
-            res.end("Server not found");
-            return;
-        } else {
-            res.writeHead(200, { "content-type": "text/html" });
-            res.end(data);
-        } 
-        })
+    else if(req.url === '/lost-found' && req.method === 'GET'){
+        serveHtml(res,'Lost&Found.html');
     }
     // BUS TRACKING PAGE
     else if(req.url === '/bus_tracking' && req.method === 'GET'){
-        fs.readFile('bus_tracking.html','utf8',(err,data) =>{
-            if(err){
-                res.writeHead(501,{'content-type' : 'text/plain'});
-                res.end("Page not found");
-            }
-            else{
-                res.writeHead(200,{'content-type' : 'text/html'});
-                res.end(data);
-            }
-        })
+        serveHtml(res,'bus_tracking.html');
     }
     // PARKING AVAILABILITY PAGE
-    else if(req.url === '/Parking' && req.method === 'GET'){
-        fs.readFile('Parking_availability.html','utf8',(err,data) =>{
-            if(err){
-                res.writeHead(501,{'content-type' : 'text/plain'});
-                res.end("Page not found");
-            }
-            else{
-                res.writeHead(200,{'content-type' : 'text/html'});
-                res.end(data);
-            }
-        })
+    else if(req.url === '/parking' && req.method === 'GET'){
+        serveHtml(res,'Parking_availability.html')
     }
     else if(req.url === '/Parking-submit' && req.method === 'POST'){
         return Parking_DB(req,res);
     }
     else if(req.url === '/event' && req.method === 'GET'){
-        fs.readFile('Event.html','utf8',(err,data) =>{
-            if(err){
-                res.writeHead(501,{'content-type' : 'text/plain'});
-                res.end("Page not found");
-            }
-            else{
-                res.writeHead(200,{'content-type' : 'text/html'});
-                res.end(data);
-            }
-        })
+        serveHtml(res,'Event.html');
     }
     else{
         res.writeHead(501,{"content-type" : "text/plain"});
