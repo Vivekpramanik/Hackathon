@@ -2,12 +2,12 @@ const http = require('http');
 const fs = require('fs');
 const sql = require('mysql2');
 const path = require('path');
-const serveHtml = require('./serve')
-const Canteen_DB = require('./canteen');
-const Signup_DB = require('./signup');
-const login_DB = require('./login');
-const Issue_DB = require('./issue');
-const Parking_DB = require('./parking');
+const serveHtml = require('./utils/serve')
+const Canteen_DB = require('./controllers/canteen');
+const Signup_DB = require('./controllers/signup');
+const login_DB = require('./controllers/login');
+const Issue_DB = require('./controllers/issue');
+const Parking_DB = require('./controllers/parking');
 http.createServer((req, res) => {
      if (req.url.startsWith('/public')) {
         const filePath = path.join(__dirname, req.url);
@@ -37,12 +37,12 @@ http.createServer((req, res) => {
     }
     // FIRSTPAGE
     if(req.url === '/' && req.method === 'GET'){
-            serveHtml(res,'firstpage.html');
+            serveHtml(res,'pages/firstpage.html');
     }
 
     // SIGNUP PAGE
     else if(req.url === '/signup' && req.method === 'GET'){
-       serveHtml(res,'signup.html');
+       serveHtml(res,'pages/signup.html');
     }
     // SUBMMITING AND GIVING DATA TO DATABASE
     else if(req.url === '/submit-signup' && req.method === 'POST'){
@@ -50,7 +50,7 @@ http.createServer((req, res) => {
     }
     // LOGIN PAGE
     else if(req.url === '/login'){
-        serveHtml(res,'login.html');
+        serveHtml(res,'pages/login.html');
     }
     // CHECKING ID PASS FROM SIGNUP DATABASE
     else if(req.url === '/submit-login' && req.method === 'POST'){
@@ -58,11 +58,11 @@ http.createServer((req, res) => {
     }
     // INDEX PAGE
     else if(req.url === '/index'){
-        serveHtml(res,'index.html');
+        serveHtml(res,'pages/index.html');
     }
     // CANTEEN PAGE
     else if(req.url === '/canteen'){
-        serveHtml(res,'canteen.html');
+        serveHtml(res,'pages/canteen.html');
     }
     // GIVING ORDER TO DATABASE
     else if(req.url === '/submit-canteen' && req.method === 'POST'){
@@ -70,7 +70,7 @@ http.createServer((req, res) => {
     }
     // ISSUE PAGE
     else if(req.url === '/issue' && req.method === 'GET'){
-        serveHtml(res,'issue.html');
+        serveHtml(res,'pages/issue.html');
     } 
     // GINVING ISSUE TO DATABASE
     else if(req.url === '/issue-submit' && req.method === 'POST'){
@@ -78,21 +78,21 @@ http.createServer((req, res) => {
     }
     // LOST& FOUND PAGE
     else if(req.url === '/lost-found' && req.method === 'GET'){
-        serveHtml(res,'Lost&Found.html');
+        serveHtml(res,'pages/Lost&Found.html');
     }
     // BUS TRACKING PAGE
     else if(req.url === '/bus_tracking' && req.method === 'GET'){
-        serveHtml(res,'bus_tracking.html');
+        serveHtml(res,'pages/bus_tracking.html');
     }
     // PARKING AVAILABILITY PAGE
     else if(req.url === '/parking' && req.method === 'GET'){
-        serveHtml(res,'Parking_availability.html')
+        serveHtml(res,'pages/Parking_availability.html')
     }
     else if(req.url === '/Parking-submit' && req.method === 'POST'){
         return Parking_DB(req,res);
     }
     else if(req.url === '/event' && req.method === 'GET'){
-        serveHtml(res,'Event.html');
+        serveHtml(res,'pages/Event.html');
     }
     else{
         res.writeHead(501,{"content-type" : "text/plain"});

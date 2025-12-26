@@ -31,6 +31,10 @@ function Canteen_DB(req,res){
                 res.writeHead(501,{'content-type' : 'text/plain'});
                 res.end("Something went wrong");
             }
+            if(result.affectedRows > 0){
+                res.writeHead(302,{Location : '/index'})
+                res.end();
+            }
             else{
                 res.writeHead(200,{'content-type' : 'text/html'});
                 res.end("<h1>Your order is placed</h1>");
