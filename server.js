@@ -67,7 +67,6 @@ http.createServer((req, res) => {
     // GIVING ORDER TO DATABASE
     else if(req.url === '/submit-canteen' && req.method === 'POST'){
         return Canteen_DB(req,res);
-        // res.end();
     }
     // ISSUE PAGE
     else if(req.url === '/issue' && req.method === 'GET'){
