@@ -1,37 +1,48 @@
 const http = require('http');
 const fs = require('fs');
 const sql = require('mysql2');
+const path = require('path');
+const serveHtml = require('./serve')
 const Canteen_DB = require('./canteen');
 const Signup_DB = require('./signup');
 const login_DB = require('./login');
 const Issue_DB = require('./issue');
 const Parking_DB = require('./parking');
 http.createServer((req, res) => {
-    // FIRSTPAGE
-    if(req.url === '/'){
-            fs.readFile("firstpage.html", 'utf-8', (err, data) => {
-        if (err) {
-            res.writeHead(501, { "content-type": "text/plain" });
-            res.end("Server not found");
-            return;
-        } else {
-            res.writeHead(200, { "content-type": "text/html" });
-            res.end(data);
-        }
-    })
+     if (req.url.startsWith('/public')) {
+        const filePath = path.join(__dirname, req.url);
+        const ext = path.extname(filePath);
+
+        const mimeTypes = {
+            '.jpg': 'image/jpeg',
+            '.jpeg': 'image/jpeg',
+            '.png': 'image/png',
+            '.webp': 'image/webp',
+            '.css': 'text/css',
+            '.js': 'text/javascript'
+        };
+
+        fs.readFile(filePath, (err, data) => {
+            if (err) {
+                res.writeHead(404);
+                res.end("File not found");
+            } else {
+                res.writeHead(200, {
+                    'Content-Type': mimeTypes[ext] || 'application/octet-stream'
+                });
+                res.end(data);
+            }
+        });
+        return;
     }
+    // FIRSTPAGE
+    if(req.url === '/' && req.method === 'GET'){
+            serveHtml(res,'firstpage.html');
+    }
+
     // SIGNUP PAGE
     else if(req.url === '/signup' && req.method === 'GET'){
-        fs.readFile("signup.html",'utf8',(err,data) =>{
-            if (err) {
-            res.writeHead(501, { "content-type": "text/plain" });
-            res.end("Server not found");
-            return;
-        } else {
-            res.writeHead(200, { "content-type": "text/html" });
-            res.end(data);
-        }
-        })
+       serveHtml(res,'signup.html');
     }
     // SUBMMITING AND GIVING DATA TO DATABASE
     else if(req.url === '/submit-signup' && req.method === 'POST'){
@@ -39,16 +50,7 @@ http.createServer((req, res) => {
     }
     // LOGIN PAGE
     else if(req.url === '/login'){
-        fs.readFile("login.html",'utf8',(err,data) =>{
-            if (err) {
-            res.writeHead(501, { "content-type": "text/plain" });
-            res.end("Server not found");
-            return;
-        } else {
-            res.writeHead(200, { "content-type": "text/html" });
-            res.end(data);
-        }
-        })
+        serveHtml(res,'login.html');
     }
     // CHECKING ID PASS FROM SIGNUP DATABASE
     else if(req.url === '/submit-login' && req.method === 'POST'){
@@ -56,29 +58,11 @@ http.createServer((req, res) => {
     }
     // INDEX PAGE
     else if(req.url === '/index'){
-        fs.readFile("index.html",'utf8',(err,data)=>{
-           if (err) {
-            res.writeHead(501, { "content-type": "text/plain" });
-            res.end("Server not found");
-            return;
-        } else {
-            res.writeHead(200, { "content-type": "text/html" });
-            res.end(data);
-        } 
-        })
+        serveHtml(res,'index.html');
     }
     // CANTEEN PAGE
     else if(req.url === '/canteen'){
-        fs.readFile("canteen.html",'utf8',(err,data)=>{
-           if (err) {
-            res.writeHead(501, { "content-type": "text/plain" });
-            res.end("Server not found");
-            return;
-        } else {
-            res.writeHead(200, { "content-type": "text/html" });
-            res.end(data);
-        } 
-        })
+        serveHtml(res,'canteen.html');
     }
     // GIVING ORDER TO DATABASE
     else if(req.url === '/submit-canteen' && req.method === 'POST'){
@@ -86,21 +70,11 @@ http.createServer((req, res) => {
         // res.end();
     }
     // ISSUE PAGE
-    else if(req.url === '/Issue' && req.method === 'GET'){
-        fs.readFile("Issue_report.html",'utf8',(err,data)=>{
-           if (err) {
-            res.writeHead(501, { "content-type": "text/plain" });
-            res.end("Server not found");
-            return;
-        } 
-          else {
-            res.writeHead(200, { "content-type": "text/html" });
-            res.end(data);
-        } 
-        })
+    else if(req.url === '/issue' && req.method === 'GET'){
+        serveHtml(res,'issue.html');
     } 
     // GINVING ISSUE TO DATABASE
-    else if(req.url === '/Issue-submit' && req.method === 'POST'){
+    else if(req.url === '/issue-submit' && req.method === 'POST'){
         return Issue_DB(req,res);
     }
     // LOST& FOUND PAGE

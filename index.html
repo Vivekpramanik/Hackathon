@@ -8,8 +8,23 @@
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body class="bg-gradient-to-br from-blue-400 to-white">
-    <form action="canteen.html"></form>
+<body class="bg-gradient-to-br from-blue-400 to-white relative">
+
+    <!-- Profile Icon with Dropdown -->
+    <div class="absolute top-4 left-4">
+        <div class="relative">
+            <img id="profileBtn" src="public/profile_icon.webp" alt="Profile"
+                class="w-12 h-12 rounded-full border-2 border-white shadow-md cursor-pointer">
+            <!-- Dropdown Menu -->
+            <div id="dropdownMenu"
+                class="hidden absolute mt-2 w-40 bg-white rounded shadow-lg py-2 text-gray-700 text-sm">
+                <a href="profile" class="block px-4 py-2 hover:bg-blue-100">View Profile</a>
+                <a href="setting" class="block px-4 py-2 hover:bg-blue-100">Settings</a>
+                <a href="logout" class="block px-4 py-2 hover:bg-blue-100">Logout</a>
+            </div>
+        </div>
+    </div>
+
     <div class="max-w-6xl mx-auto p-6">
         <h1 class="text-4xl font-bold text-center mb-4 underline">Smart Campus App</h1>
         <p class="text-lg text-center text-blue-600 mb-8 underline">
@@ -20,40 +35,66 @@
             <div class="bg-white p-6 rounded-2xl shadow-md">
                 <h2 class="text-xl font-semibold mb-2 underline">Canteen Pre-ordering</h2>
                 <p>Real-time pre-ordering and status tracking of canteen orders.</p>
-                <a href="canteen"><button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-green-400">Click to continue </button></a>
+                <a href="canteen"><button
+                        class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-green-400">Click to
+                        continue </button></a>
             </div>
 
             <div class="bg-white p-6 rounded-2xl shadow-md">
                 <h2 class="text-xl font-semibold mb-2 underline">Issue Reporting</h2>
                 <p>Report cleanliness and maintenance issues with image and location tagging.</p>
-                <a href="Issue"><button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-green-400">Click to continue</button></a>
+                <a href="issue"><button
+                        class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-green-400">Click to
+                        continue</button></a>
             </div>
 
             <div class="bg-white p-6 rounded-2xl shadow-md">
                 <h2 class="text-xl font-semibold mb-2 underline">Lost & Found</h2>
                 <p>Log and discover lost items with photos and geo-tags.</p>
-                <a href="lost&found"><button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-green-400">Click to continue</button></a>
+                <a href="lost-found"><button
+                        class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-green-400">Click to
+                        continue</button></a>
             </div>
 
             <div class="bg-white p-6 rounded-2xl shadow-md">
                 <h2 class="text-xl font-semibold mb-2 underline">Bus Tracking</h2>
                 <p>Track campus buses with live location and estimated time of arrival.</p>
-                <a href="bus_tracking"><button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-green-400">Click to continue</button></a>
+                <a href="bus_tracking"><button
+                        class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-green-400">Click to
+                        continue</button></a>
             </div>
 
             <div class="bg-white p-6 rounded-2xl shadow-md">
                 <h2 class="text-xl font-semibold mb-2 underline">Parking Availability</h2>
                 <p>View current parking space availability in real-time.</p>
-                <a href="Parking"><button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-green-400">Click to continue</button></a>
+                <a href="parking"><button
+                        class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-green-400">Click to
+                        continue</button></a>
             </div>
 
             <div class="bg-white p-6 rounded-2xl shadow-md">
                 <h2 class="text-xl font-semibold mb-2 underline">Event Discovery</h2>
                 <p>Discover campus events and receive instant notifications.</p>
-                <a href="event"><button class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-green-400">Click to continue</button></a>
+                <a href="event"><button
+                        class="mt-4 bg-blue-600 text-white px-4 py-2 rounded hover:bg-green-400">Click to
+                        continue</button></a>
             </div>
         </div>
     </div>
+    <script>
+const profileBtn = document.getElementById("profileBtn");
+const dropdownMenu = document.getElementById("dropdownMenu");
+
+profileBtn.addEventListener("click", (e) => {
+    e.stopPropagation();
+    dropdownMenu.classList.toggle("hidden");
+});
+
+document.addEventListener("click", () => {
+    dropdownMenu.classList.add("hidden");
+});
+</script>
+
 </body>
 
 </html>
