@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Profile</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1e3a8a, #0f172a);
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .profile-container {
+            background: white;
+            width: 350px;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+        }
+
+        .profile-container img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            margin-bottom: 15px;
+            border: 4px solid #2563eb;
+        }
+
+        .profile-container h2 {
+            margin-bottom: 5px;
+            color: #1e293b;
+        }
+
+        .profile-container p {
+            color: #475569;
+            margin-bottom: 15px;
+        }
+
+        .details {
+            text-align: left;
+            margin-top: 20px;
+        }
+
+        .details p {
+            margin: 8px 0;
+            color: #334155;
+        }
+
+        .btn {
+            display: inline-block;
+            margin-top: 25px;
+            padding: 10px 25px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: #1e40af;
+        }
+    </style>
+
+</head>
+<body>
+
+    <div class="profile-container">
+        <img src="user.png" alt="profile">
+
+        <h2>Karan Kumar</h2>
+        <p>Student | Smart Campus App</p>
+
+        <div class="details">
+            <p><b>Roll No:</b> 23CS045</p>
+            <p><b>Email:</b> karan@gmail.com</p>
+            <p><b>Department:</b> Computer Science</p>
+        </div>
+
+        <a href="index" class="btn">Back to Dashboard</a>
+    </div>
+    <script>
+fetch("/profile-data")
+.then(res => {
+    if(res.status === 401){
+        window.location.href = "/login";
+    }
+    return res.json();
+})
+.then(data => {
+    document.querySelector("h2").innerText = data.name;
+
+    document.querySelector(".details").innerHTML = `
+        <p><b>Roll No:</b> ${data.roll}</p>
+        <p><b>Email:</b> ${data.email}</p>
+        <p><b>Department:</b> ${data.department}</p>
+    `;
+});
+</script>
+
+</body>
+</html>

@@ -8,6 +8,7 @@ const Signup_DB = require('./controllers/signup');
 const login_DB = require('./controllers/login');
 const Issue_DB = require('./controllers/issue');
 const Parking_DB = require('./controllers/parking');
+const profileData = require('./controllers/profile');
 http.createServer((req, res) => {
      if (req.url.startsWith('/public')) {
         const filePath = path.join(__dirname, req.url);
@@ -59,6 +60,10 @@ http.createServer((req, res) => {
     // INDEX PAGE
     else if(req.url === '/index'){
         serveHtml(res,'pages/index.html');
+    }
+    // PROFILE PAGE
+    else if(req.url === '/profile'){
+        serveHtml(res,'pages/profile.html');
     }
     // CANTEEN PAGE
     else if(req.url === '/canteen'){
